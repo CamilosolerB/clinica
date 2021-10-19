@@ -2,3 +2,40 @@
     margin: 0;
     padding: 0;
 }
+
+header{
+    background-color: aqua;
+    height: 40px;
+}
+
+h1{
+    display: inline;
+}
+
+ul {
+    list-style: none;
+    display: inline;
+    float: right;
+    margin-right: 20px;
+}
+
+li{
+    display: inline;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+}
+
+.inser{
+    margin-left: 800px;
+    margin-top: 300px;
+}
+
+
+
+input{
+    margin-bottom: 20px;
+}
