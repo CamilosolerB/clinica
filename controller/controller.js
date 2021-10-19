@@ -1,5 +1,5 @@
-//const conexion = require('../conexion/conexion')
-//const cnn = conexion();
+const conexion = require('../conexion/conexion')
+const cnn = conexion();
 const bcrypjs = require('bcryptjs')
 const controller  = {};
 
