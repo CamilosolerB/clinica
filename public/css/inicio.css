@@ -1,3 +1,41 @@
-body{
-    background-color:lightgreen ;
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+nav{
+    height: 80px;
+    background-color: rgba(145, 150, 148, 0.87);
+}
+
+.link{
+    padding-top: 20px;
+    display: inline-flex;
+    width: 10;
+    height: 80px;
+    margin-right: 1px;
+    color: black;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.objeto{
+    display: inline;
+    padding-top: 20px;
+    text-align: center;
+
+}
+
+
+.objeto :hover{
+    color: black;
+    background-color: rgba(198, 230, 220, 0.87);
+    height: 65px;
+    border-bottom: black 1px solid;
+
 }
