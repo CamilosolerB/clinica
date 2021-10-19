@@ -4,6 +4,10 @@ const bcrypjs = require('bcryptjs')
 const controller  = {};
 
 controller.index=(req,res,next)=>{
+    res.render('inicio')
+}
+
+controller.login=(req,res,next)=>{
     res.render('login')
 }
 
