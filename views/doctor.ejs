@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Hola doctor</h1>
-    <form action="/foto" method="post">
+    <form action="/foto" method="post" enctype="multipart/form-data">
         <%datos.forEach(function(datos) {%>
     <input type="text" readonly value="<%=datos.documento%>" name="documento">
         <%})%>

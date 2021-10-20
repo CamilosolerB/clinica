@@ -1,6 +1,8 @@
 const conexion = require('../conexion/conexion')
 const cnn = conexion();
-const bcrypjs = require('bcryptjs')
+const bcrypjs = require('bcryptjs');
+const multer = require('multer')
+const upload = multer({ dest: '../public/upload'});
 const controller  = {};
 
 controller.index=(req,res,next)=>{
@@ -24,16 +26,7 @@ controller.ingreso=(req,res,next)=>{
     })
 }
 controller.firma=(req,res,next)=>{
-    const fir = req.body.firma;
-    const doc = req.body.documento;
-    cnn.query('UPDATE doctor SET firma="'+fir+'" WHERE documento="'+doc+'"',(err)=>{
-        if(err){
-            next(new Error(err))
-        }
-        else{
-            console.log("anadido")
-            res.redirect('/')
-        }
-    })
+    console.log(req.file)
+    res.send("El archivo se subio")
 }
 module.exports=controller;
