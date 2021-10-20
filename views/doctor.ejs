@@ -8,6 +8,13 @@
     <title>Subida de Archivos</title>
 </head>
 <body>
+    <header>
+        <nav class="lista">
+            <li class="objeto"><a href="/iniciasesion" class="link">Login</a></li>
+            <li class="objeto"><a href="" class="link">Quienes somos</a></li>
+            <li class="objeto"><a href="" class="link">Contactos</a></li>
+        </nav>
+    </header>
     <%datos.forEach(function(datos) {%>
         <h1 class="titulo">Hola doctor <%=datos.nombre%> <%=datos.apellido%> <%=datos.documento%></h1>
     <%})%>
