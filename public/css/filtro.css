@@ -1,0 +1,55 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(to top, #fcfcfc 0%, #5cbcec 100%);
+}
+
+
+.fondo{
+    background: #ffff;
+    height: 15em;
+    width: 40em;
+    margin: 6em auto;
+    border-radius: 10px;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.filtro{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 10%;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.info-filtro{
+    height: 30px;
+    margin-left: 10px;
+    padding-left: 20px;
+    border: none;
+    border-bottom: solid 1px black;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+    background: none;
+    
+}
+
+.info-filtro-fecha{
+    background: NONE;
+    border: none;
+    margin-left: 15px;
+}
+
+.tabla{
+    height: 10%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
