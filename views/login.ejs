@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="./css/login.css">
     <title>Document</title>
 </head>
 <body>
     <header>
         <h1>Clínica</h1>
         <ul>
-            <li><a href="#">Inicio</a></li>
+            <li><a href="/">Inicio</a></li>
         </ul>   
     </header>
     <div class="inser">
         <h2>Bienvenido</h2>
-        <form class="formularios">
-            <input type="text" class="username"><br>
-            <input type="password" class="password">
+        <form class="formularios" method="post" action="/validar">
+            <input type="text" class="username" name="username">
+            <input type="password" class="password" name="password">
+            <input type="submit" name="Subir">
         </form>
     </div>
 </body>
