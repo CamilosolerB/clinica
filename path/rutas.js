@@ -2,12 +2,15 @@
 const express = require('express');
 const controller = require('../controller/controller')
 const multer = require('multer')
-Storage = multer.diskStorage({
+storage = multer.diskStorage({
     destination: (req, file, cb) =>{
-        
+        cb(null, './public/upload')
+    },
+    filename: (req,file,cb)=>{
+        cb(null, file.originalname)
     }
 })
-const upload = multer({ dest: "./public/upload"});
+const upload = multer({storage});
 const rutas = express.Router()
 
 //links
