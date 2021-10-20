@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/doctor.css">
+    <title>Subida de Archivos</title>
+</head>
+<body>
+    <%datos.forEach(function(datos) {%>
+        <h1 class="titulo">Hola doctor <%=datos.nombre%> <%=datos.apellido%> <%=datos.documento%></h1>
+    <%})%>
+    <div class="fondo">
+    <form action="/foto" method="post" enctype="multipart/form-data" class="resu">
+        <%for(i=0;i<1;i++){%>
+        <input type="text" value="<%=datos[i].documento%>" name="documentodoc" class="val-dat">
+        <input type="text" value="<%=datos[i].firma%>" class="val-dat">
+        <%}%>
+        <input type="number" placeholder="documento paciente" name="documentopac" class="val-dat">
+        <input type="file" class="btn" placeholder="Archivo" name="firma" multiple><br>
+        <button type="submit" class="btn" name="Subir">validar firma</button><br>
+        <label for="">¿Verificado?<input type="checkbox" readonly name="verificado"></label><br>
+        <input type="file" class="btn" name="historia" multiple >
+    </form>
+</div>
+</body>
+</html>
