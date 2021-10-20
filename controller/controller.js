@@ -4,9 +4,8 @@ const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
 const fs = require('fs');
-//const {TesseractWorker} = require('tesseract.js')
-//const worker = new TesseractWorker();
 const controller  = {};
+const ocr= require('ocr')
 
 controller.index=(req,res,next)=>{
     res.render('inicio')
@@ -51,5 +50,8 @@ controller.firma=(req,res,next)=>{
     })
     //cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doctor,Id_paciente:paci,imagen:histo})
     //res.send("El archivo se subio")
+}
+controller.ocr=(req,res,next)=>{
+
 }
 module.exports=controller;
