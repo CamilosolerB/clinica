@@ -4,7 +4,39 @@ body {
 }
 
 
+nav{
+    height: 55px;
+    background-color:#5CBCEC    ;
 
+}
+
+.link{  
+    text-align: center;
+    padding-top: 15px;
+    display: inline-flex;
+    width: 60px;
+    height: 40px;
+    margin-right: 1px;
+    color: black;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.objeto{
+    display: inline;
+    padding-top: 20px;
+    text-align: center;
+
+}
+
+
+.objeto :hover{
+    color: black;
+    background: -prefix-linear-gradient(top, #5CBCEC , white);
+    background: linear-gradient(to bottom, #5CBCEC , white);     height: 45px;
+    border-bottom: black 1px solid;
+
+}
 .resu{
     height: 15em;
     width: 40em;
