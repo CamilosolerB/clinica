@@ -3,8 +3,8 @@ const express = require('express');
 const controller = require('../controller/controller')
 const multer = require('multer')
 const fs = require('fs');
-const {TesseractWorker} = require('tesseract.js')
-const worker = new TesseractWorker();
+//const TesseractWorker = require('tesseract.js')
+//const worker =  TesseractWorker();
 storage = multer.diskStorage({
     destination: (req, file, cb) =>{
         cb(null, './public/upload')

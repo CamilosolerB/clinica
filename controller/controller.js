@@ -4,8 +4,8 @@ const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
 const fs = require('fs');
-const {TesseractWorker} = require('tesseract.js')
-const worker = new TesseractWorker();
+//const {TesseractWorker} = require('tesseract.js')
+//const worker = new TesseractWorker();
 const controller  = {};
 
 controller.index=(req,res,next)=>{
