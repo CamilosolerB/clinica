@@ -9,8 +9,12 @@
 <body>
     <h1>Hola doctor</h1>
     <form action="/foto" method="post">
-    <input type="file" placeholder="Archivo">
-    <input type="submir" name="Subir">
+        <%datos.forEach(function(datos) {%>
+    <input type="text" readonly value="<%=datos.documento%>" name="documento">
+        <%})%>
+    <input type="file" placeholder="Archivo" name="firma">
+    
+    <input type="submit" name="Subir">
     </form>
 </body>
 </html>

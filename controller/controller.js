@@ -23,5 +23,17 @@ controller.ingreso=(req,res,next)=>{
         }
     })
 }
-
+controller.firma=(req,res,next)=>{
+    const fir = req.body.firma;
+    const doc = req.body.documento;
+    cnn.query('UPDATE doctor SET firma="'+fir+'" WHERE documento="'+doc+'"',(err)=>{
+        if(err){
+            next(new Error(err))
+        }
+        else{
+            console.log("anadido")
+            res.redirect('/')
+        }
+    })
+}
 module.exports=controller;
