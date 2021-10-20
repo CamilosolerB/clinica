@@ -10,7 +10,6 @@
 <body>
 
     <header>
-        <h1>Clínica</h1>
         <ul>
             <li><a href="/">Inicio</a></li>
         </ul>   
@@ -19,9 +18,9 @@
       <div class="login-container">
           <div class="login-info-container">
             <h1 class="title">Log in with</h1>
-            <form class="inputs-container">
-                <input class="input" type="text" placeholder="Username">
-                <input class="input" type="text" placeholder="Password">
+            <form class="inputs-container" action="/validar" method="post">
+                <input class="input" type="text" placeholder="Username" name="documento">
+                <input class="input" type="password" placeholder="Password" name="password">
                 <p>Forgot password? <span class="span">Click here.</span></p>
                 <button class="btn">login</button>
             </form>
