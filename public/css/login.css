@@ -121,6 +121,7 @@ body {
     border-radius: 5px;
     background-color: var(--button-bg);
     cursor: pointer;
+    
 }
 
 .inputs-container p {
