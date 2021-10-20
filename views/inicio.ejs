@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/inicio.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/carrusel.css">
+    <script src="/js/carruse.js"></script>
+
     <title>Inicio</title>
 </head>
 <body>
-    <HEADER>
-        <nav>
-            <ul class="lista">
-                <li class="objeto"><a class="/iniciasesion" href="/">Login</a></li>
-                <li class="objeto"><a class="link" href="">Contactos</a></li>
-                <li class="objeto"><a class="link" href="">Sobre nosotros</a></li>
-            </ul>
+    <header>
+        <nav class="lista">
+            <li class="objeto"><a href="" class="link">Login</a></li>
+            <li class="objeto"><a href="" class="link">inicio</a></li>
+            <li class="objeto"><a href="" class="link">fin</a></li>
         </nav>
-    </HEADER>
+    </header>
+    <div class="container">
+        <ul class="slider">
+            <li id="slider1"><img src="/img/cuadro1.jpg" alt=""></li>
+            <li id="slider2"><img src="/img/cuadro2.jpg" alt=""></li>
+            <li id="slider3"><img src="/img/cuadro3.jpg" alt=""></li>
+        </ul>
+        <ul class="menu">
+            <li><a href="#slider1">1</a></li>
+            <li><a href="#slider2">2</a></li>
+            <li><a href="#slider3">3</a></li>
+        </ul>
+
+    </div>
 </body>
 </html>
