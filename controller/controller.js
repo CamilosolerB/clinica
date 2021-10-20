@@ -9,11 +9,9 @@ const { text } = require('express');
 const controller  = {};
 
 const options = {
-    l: 'es',
-    psm: 6,
-    env:{
-        maxBuffer: 4096 * 4096
-    }
+    l: 'spa',
+    oem: 1,
+    psm: 3,
 };
 
 controller.index=(req,res,next)=>{
@@ -62,7 +60,8 @@ controller.firma=(req,res,next)=>{
 
     const image = '../fotoprueba.jpg'
 
-    teeseract.recognize(image, options)
+    teeseract
+    .recognize(image, options)
     .then((text)=>{
         console.log(text)
     })
