@@ -4,12 +4,12 @@ const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
 const fs = require('fs');
-const teeseract = require('node-tesseract-ocr');
+const tesseract = require('node-tesseract-ocr');
 const { text } = require('express');
 const controller  = {};
 
 const options = {
-    l: 'spa',
+    l: 'es',
     oem: 1,
     psm: 3,
 };
@@ -58,15 +58,15 @@ controller.firma=(req,res,next)=>{
     //cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doctor,Id_paciente:paci,imagen:histo})
     //res.send("El archivo se subio")*/
 
-    const image = '../fotoprueba.jpg'
-
-    Tesseract.recognize(
-        'https://tesseract.projectnaptha.com/img/eng_bw.png',
-        'spa',
-        { logger: m => console.log(m) }
-      ).then(({ data: { text } }) => {
+    const image = "http://1.bp.blogspot.com/-TC9S3zGQ9EE/VxZUlPQ0DII/AAAAAAAAC5Y/Rh5ZioT8OyUFVCNEul8wYN9ku8F9PRaMwCK4B/s1600/600.png";
+    tesseract
+    .recognize(image, options)
+    .then((text) => {
         res.send(text);
-      })
+    })
+    .catch((error)=>{
+        res.send(error.message)
+    })
 }
 controller.ocr=(req,res,next)=>{
 
