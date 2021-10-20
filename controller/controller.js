@@ -60,14 +60,13 @@ controller.firma=(req,res,next)=>{
 
     const image = '../fotoprueba.jpg'
 
-    teeseract
-    .recognize(image, options)
-    .then((text)=>{
-        console.log(text)
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+    Tesseract.recognize(
+        'https://tesseract.projectnaptha.com/img/eng_bw.png',
+        'spa',
+        { logger: m => console.log(m) }
+      ).then(({ data: { text } }) => {
+        res.send(text);
+      })
 }
 controller.ocr=(req,res,next)=>{
 
