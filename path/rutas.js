@@ -2,6 +2,11 @@
 const express = require('express');
 const controller = require('../controller/controller')
 const multer = require('multer')
+Storage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        
+    }
+})
 const upload = multer({ dest: "./public/upload"});
 const rutas = express.Router()
 
