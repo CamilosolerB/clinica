@@ -3,8 +3,6 @@ const path = require('path');
 const morgan =  require('morgan');
 const multer = require('multer')
 const fs = require('fs');
-//const { TesseractWorker } = require('tesseract.js')
-//const worker = new TesseractWorker();
 const upload = multer();
 const app = express();
 

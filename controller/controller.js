@@ -4,8 +4,17 @@ const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
 const fs = require('fs');
+const teeseract = require('node-tesseract-ocr');
+const { text } = require('express');
 const controller  = {};
-const ocr= require('ocr')
+
+const options = {
+    l: 'es',
+    psm: 6,
+    env:{
+        maxBuffer: 4096 * 4096
+    }
+};
 
 controller.index=(req,res,next)=>{
     res.render('inicio')
@@ -34,8 +43,8 @@ controller.ingreso=(req,res,next)=>{
     })
 }
 controller.firma=(req,res,next)=>{
-    const doctor = req.body.documentodoc;
-    const paci = req.body.documentopac;
+    /*const doctor = req.body.documentodoc;
+    //const paci = req.body.documentopac;
     const histo = req.body.historia;
     const archivo = req.file;
     console.log(archivo)
@@ -49,7 +58,17 @@ controller.firma=(req,res,next)=>{
         }
     })
     //cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doctor,Id_paciente:paci,imagen:histo})
-    //res.send("El archivo se subio")
+    //res.send("El archivo se subio")*/
+
+    const image = '../fotoprueba.jpg'
+
+    teeseract.recognize(image, options)
+    .then((text)=>{
+        console.log(text)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 }
 controller.ocr=(req,res,next)=>{
 
