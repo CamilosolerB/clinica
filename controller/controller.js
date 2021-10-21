@@ -3,13 +3,13 @@ const cnn = conexion();
 const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
-const fs = require('fs');
+const pdf = require('html-pdf');
 const tesseract = require('node-tesseract-ocr');
 const { text } = require('express');
 const controller  = {};
 
 const options = {
-    l: 'es',
+    lang: 'spa',
     oem: 1,
     psm: 3,
 };
@@ -58,17 +58,50 @@ controller.firma=(req,res,next)=>{
     //cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doctor,Id_paciente:paci,imagen:histo})
     //res.send("El archivo se subio")*/
 
-    const image = "http://1.bp.blogspot.com/-TC9S3zGQ9EE/VxZUlPQ0DII/AAAAAAAAC5Y/Rh5ZioT8OyUFVCNEul8wYN9ku8F9PRaMwCK4B/s1600/600.png";
-    tesseract
-    .recognize(image, options)
-    .then((text) => {
-        res.send(text);
+    const image = ["./public/upload/nombre.PNG","./public/upload/documento.PNG","./public/upload/direccion.PNG","./public/upload/fecha.PNG","./public/upload/informacion.PNG"];
+    
+    console.log("Antes del ocr")
+    var nombre,doc;
+    
+    tesseract.recognize(image, options)
+    .then((nombre) => {
+      res.send(nombre)  
     })
     .catch((error)=>{
         res.send(error.message)
     })
-}
-controller.ocr=(req,res,next)=>{
+    
+
+    let documento = tesseract
+    .recognize(image, options)
+    .then((doc) => {
+        res.send(doc);
+    })
+    .catch((error)=>{
+        res.send(error.message)
+    })
+
+    tesseract
+    .recognize(image, options)
+    .then((direccion) => {
+        res.send(direccion)
+    })
+    .catch((error)=>{
+        res.send(error.message)
+    })
+
+    tesseract
+    .recognize(image, options)
+    .then((fecha) => {
+        res.send(fecha)
+    })
+    .catch((error)=>{
+        res.send(error.message)
+    })
+
 
 }
+
+
+
 module.exports=controller;
