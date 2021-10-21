@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Clinica</title>
+</head>
+<body>
+    <% datos.forEach(function (datos){ %>
+
+        <p><%=datos.nombre%></p>
+        <p><%=datos.id_paciente%></p>
+        <p><%=datos.direccion%></p>
+        <p><%=datos.fecha%></p>
+        <p><%=datos.historia%></p>
+        <%})%>
+</body>
+</html>

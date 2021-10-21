@@ -3,13 +3,13 @@ const cnn = conexion();
 const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
-const fs = require('fs');
+const pdf = require('html-pdf');
 const tesseract = require('node-tesseract-ocr');
 const { text } = require('express');
 const controller  = {};
 
 const options = {
-    l: 'es',
+    lang: 'spa',
     oem: 1,
     psm: 3,
 };
@@ -32,7 +32,7 @@ controller.ingreso=(req,res,next)=>{
         }
         else if(resbb != 0){
 
-            res.render("doctor",{datos:resbb})
+            res.render("eleccion",{datos:resbb})
             
         }
         else{
@@ -40,35 +40,86 @@ controller.ingreso=(req,res,next)=>{
         }
     })
 }
-controller.firma=(req,res,next)=>{
-    /*const doctor = req.body.documentodoc;
-    //const paci = req.body.documentopac;
-    const histo = req.body.historia;
-    const archivo = req.file;
-    console.log(archivo)
-    cnn.query('UPDATE doctor SET firma="'+archivo+'" WHERE documento="'+doctor+'"',(err,resbb)=>{
-        if(err){
-            next(new Error(err))
-        }
-        else{
-            console.log('añadido')
-            res.redirect('/')
-        }
-    })
-    //cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doctor,Id_paciente:paci,imagen:histo})
-    //res.send("El archivo se subio")*/
+controller.firma=async(req,res,next)=>{
+    console.log(req.files)
 
-    const image = "http://1.bp.blogspot.com/-TC9S3zGQ9EE/VxZUlPQ0DII/AAAAAAAAC5Y/Rh5ZioT8OyUFVCNEul8wYN9ku8F9PRaMwCK4B/s1600/600.png";
-    tesseract
-    .recognize(image, options)
-    .then((text) => {
-        res.send(text);
+    const nom="./public/upload/nombre.PNG"
+    const dir="./public/upload/direccion.PNG";
+    const fec ="./public/upload/fecha.PNG"
+    const info = "./public/upload/informacion.PNG";
+    
+    console.log("Antes del ocr")
+    //var nombre,doc;
+
+        tesseract.recognize(fec, options)
+        .then((dia) => {
+            const doc=req.body.documentodoc
+            const paci=req.body.documentopac
+            const fech= new Date();
+            cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doc,id_paciente:paci,fecha:fech},async(err,resbb)=>{
+                if(err){
+                    next(new Error(err))
+                }
+                else{
+                    tesseract.recognize(nom, options)
+                    .then((nombr) => {
+                        const doc=req.body.documentodoc
+                        const paci=req.body.documentopac
+                        cnn.query('UPDATE historia_clinica SET nombre="'+nombr+'" WHERE Id_doctor="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
+                            if(err){
+                                next(new Error(err))
+                            }
+                            else{
+                                tesseract.recognize(dir, options)
+                                .then((direct) => {
+                                    const doc=req.body.documentodoc
+                                    const paci=req.body.documentopac
+                                    cnn.query('UPDATE historia_clinica SET direccion="'+direct+'" WHERE Id_doctor="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
+                                        if(err){
+                                            next(new Error(err))
+                                        }
+                                        else{
+                                            tesseract.recognize(info, options)
+                                            .then((clinic) => {
+                                                const doc=req.body.documentodoc
+                                                const paci=req.body.documentopac
+                                                cnn.query('UPDATE historia_clinica SET historia="'+clinic+'" WHERE Id_doctor="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
+                                                    if(err){
+                                                        next(new Error(err))
+                                                    }
+                                                    else{
+                                                        const doc=req.body.documentodoc
+                                                        const paci=req.body.documentopac
+                                                        cnn.query("SELECT * FROM historia_clinica WHERE Id_doctor=? AND id_paciente=?",[doc,paci],(err,resbb)=>{
+                                                            if(err){
+                                                                next(new Error(err))
+                                                            }
+                                                            else{
+                                                                res.render('pdf',{datos:resbb})
+                                                            }
+                                                        })
+                                                        
+                                                    }
+                                        })
+                                    })
+                                }
+                            })
+                        })
+                    }
+                })
+            })
+            }
+        })
     })
-    .catch((error)=>{
-        res.send(error.message)
-    })
-}
-controller.ocr=(req,res,next)=>{
+            .catch((error)=>{
+                res.send(error.message)
+            })
+
+
+    
 
 }
+
+
+
 module.exports=controller;
