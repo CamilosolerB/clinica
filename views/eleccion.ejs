@@ -10,10 +10,13 @@
 <body>
     <header>
         <nav class="lista">
-            <li class="objeto"><a href="/iniciasesion" class="link">Flitrar</a></li>
+            <li class="objeto"><a href="" class="link">Flitrar</a></li>
             <li class="objeto"><a href="" class="link">Ingresar historia clinica</a></li>
             <li class="objeto"><a href="" class="link">Contactos</a></li>
         </nav>
+        <%datos.forEach( function (datos) {%>
+            <a href="/cerrar" class="cerrar"><%=datos.nombre%> <%=datos.apellido%></a>
+        <%})%>
     </header>
 
     <div class="contenedor">
@@ -33,7 +36,12 @@
             <div class="card-acciones">
                 <button class="botones agrandar">
                     <span class="fas fa-envelope">
-                        <a href="#">consultar</a> 
+                        <form action="/consultar" method="post">
+                            <%datos.forEach( function (datos) {%>
+                            <input class="oculto" value="<%=datos.id_doctor%>" type="text" name="doc">
+                            <%})%>
+                        <button type="submit">Consultar</button>
+                    </form> 
                     </span>
                 </button>
             </div>
@@ -57,7 +65,12 @@
             <div class="card-acciones">
                 <button   class="botones agrandar">
                     <span class="fas fa-envelope">
-                        <a href="#">ingresar</a> 
+                        <form action="/ingresar" method="post">
+                            <%datos.forEach( function (datos) {%>
+                            <input class="oculto" value="<%=datos.id_doctor%>" type="text" name="doc">
+                            <%})%>
+                            <button type="submit">Ingresar</button>
+                        </form>
                     </span>
                 </button>
             </div>

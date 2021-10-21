@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/filtro.css">
+    <link rel="stylesheet" href="./css/filtro.css">
     <title>Filtrar</title>
 </head>
 <body>
@@ -14,6 +14,9 @@
             <li class="objeto"><a href="" class="link">Quienes somos</a></li>
             <li class="objeto"><a href="" class="link">Contactos</a></li>
         </nav>
+        <%datos.forEach( function (datos) {%>
+            <a href="/cerrar" class="cerrar"><%=datos.nombred%> <%=datos.apellidod%></a>
+        <%})%>
     </header>
     <div class="fondo">
     <form action="" class="filtro" method="post">
@@ -31,8 +34,8 @@
         <tbody>
            <% datos.forEach(function (datos){ %>
             <tr class="resu">
-                <td><input type="text" value="<%=datos.nombre%>" name="nombre" id="nombre" class="info-filtro"></td>
-                <td><input type="text" value="<%=datos.nombre_paciente%>" name="nombre_paciente" id="nombre_paciente" class="info-filtro"></td>
+                <td><input type="text" value="<%=datos.nombred%> <%=datos.apellidod%>" name="nombre" id="nombre" class="info-filtro"></td>
+                <td><input type="text" value="<%=datos.nombre%>" name="nombre_paciente" id="nombre_paciente" class="info-filtro"></td>
                 <td><input type="text" value="<%=datos.fecha%>" name="fecha" id="fecha" class="info-filtro"></td>
             </tr>
          <%})%>

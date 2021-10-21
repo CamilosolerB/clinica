@@ -84,4 +84,15 @@ nav{
     justify-content: center;
     align-items: center;
 }
+.cerrar{
+    display: block;
+    padding: 15px;
+    color: #000;
+}
+.cerrar :hover{
+    color: black;
+    background: -prefix-linear-gradient(top, #5CBCEC , white);
+    background: linear-gradient(to bottom, #5CBCEC , white);     height: 45px;
+    border-bottom: black 1px solid;
 
+}

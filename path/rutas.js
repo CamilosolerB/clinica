@@ -22,6 +22,9 @@ rutas.get('/',controller.index);
 rutas.get('/iniciasesion',controller.login);
 rutas.post('/validar',controller.ingreso);
 rutas.post('/foto',nom,controller.firma);
+rutas.post('/consultar',controller.paginafiltrar)
+rutas.get('/cerrar',controller.cerrar)
+rutas.post('/ingresar',controller.inserta);
 
 
 module.exports=rutas;

@@ -15,29 +15,32 @@
             <li class="objeto"><a href="" class="link">Quienes somos</a></li>
             <li class="objeto"><a href="" class="link">Contactos</a></li>
         </nav>
+        <%datos.forEach( function (datos) {%>
+            <a href="/cerrar" class="cerrar"><%=datos.nombred%> <%=datos.apellidod%></a>
+        <%})%>
     </header>
     <%datos.forEach(function(datos) {%>
-        <h1 class="titulo">Hola doctor <%=datos.nombre%> <%=datos.apellido%> <%=datos.documento%></h1>
+        <h1 class="titulo">Hola doctor <%=datos.nombred%> <%=datos.apellidod%> <%=datos.documentod%></h1>
     <%})%>
     <div class="fondo">
         <h2>Ingresar historia clinica</h2>
     <form action="/foto" method="post" enctype="multipart/form-data" class="resu">
         <%for(i=0;i<1;i++){%>
         <label for="">Documento:</label>
-        <input type="text" value="<%=datos[i].documento%>" name="documentodoc" class="val-dat">
+        <input type="text" value="<%=datos[i].documentod%>" name="documentodoc" class="val-dat" readonly>
         <%}%>
         <label for="">Documento del paciente:</label>
         <input type="text" placeholder="documento paciente" name="documentopac" class="val-dat">
-        <label for="">Subir nombre paciente</label>
+        <label for="">Subir los archivos</label>
         <input type="file" class="btn" placeholder="Archivo" name="nombre" multiple><br>
-        <label for="">Subir documento paciente</label>
-        <input type="file" class="btn" placeholder="Archivo" name="documento"><br>
-        <label for="">Subir direccion paciente</label>
-        <input type="file" class="btn" placeholder="Archivo" name="direccion"><br>
-        <label for="">Fecha del informe</label>
-        <input type="file" class="btn" placeholder="Archivo" name="fecha"><br>
-        <label for="">Subir informe</label>
-        <input type="file" class="btn" placeholder="Archivo" name="informacion" multiple><br>
+        <label for="" class="btn1">Subir documento paciente</label>
+        <input type="file" class="btn1" placeholder="Archivo" name="documento"><br>
+        <label for="" class="btn1">Subir direccion paciente</label>
+        <input type="file" class="btn1" placeholder="Archivo" name="direccion"><br>
+        <label for="" class="btn1">Fecha del informe</label>
+        <input type="file" class="btn1" placeholder="Archivo" name="fecha"><br>
+        <label for="" class="btn1">Subir informe</label>
+        <input type="file" class="btn1" placeholder="Archivo" name="informacion" multiple><br>
         <button type="submit" class="btn-subir" name="Subir">Subir a la plataforma</button><br>
     </form>
 </div>

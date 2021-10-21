@@ -9,7 +9,7 @@
 
 nav{
     height: 55px;
-    background-color:#5CBCEC    ;
+    background-color:#5CBCEC;
 
 }
 
@@ -252,4 +252,26 @@ footer{
     margin-bottom: 0;
     height: 60px;
     background-color: #5CBCEC;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color:#5CBCEC;
+}
+.cerrar{
+    display: block;
+    padding: 15px;
+    color: #000;
+}
+.cerrar :hover{
+    color: black;
+    background: -prefix-linear-gradient(top, #5CBCEC , white);
+    background: linear-gradient(to bottom, #5CBCEC , white);     height: 45px;
+    border-bottom: black 1px solid;
+
+}
+.oculto{
+
+    display: none;
 }
