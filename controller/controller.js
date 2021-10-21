@@ -63,8 +63,7 @@ controller.firma=(req,res,next)=>{
     console.log("Antes del ocr")
     var nombre,doc;
     
-    tesseract
-    .recognize(image, options)
+    tesseract.recognize(image, options)
     .then((nombre) => {
       res.send(nombre)  
     })
@@ -100,14 +99,7 @@ controller.firma=(req,res,next)=>{
         res.send(error.message)
     })
 
-    tesseract
-    .recognize(image, options)
-    .then((informacion) => {
-        res.send(informacion)
-    })
-    .catch((error)=>{
-        res.send(error.message)
-    })
+
 }
 
 
