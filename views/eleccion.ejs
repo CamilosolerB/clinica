@@ -34,16 +34,12 @@
                 
             </div>
             <div class="card-acciones">
-                <button class="botones agrandar">
-                    <span class="fas fa-envelope">
                         <form action="/consultar" method="post">
                             <%datos.forEach( function (datos) {%>
                             <input class="oculto" value="<%=datos.id_doctor%>" type="text" name="doc">
                             <%})%>
-                        <button type="submit">Consultar</button>
+                        <button type="submit" class="botones agrandar">Consultar</button>
                     </form> 
-                    </span>
-                </button>
             </div>
         </div>
 
@@ -63,16 +59,12 @@
                 
             </div>
             <div class="card-acciones">
-                <button   class="botones agrandar">
-                    <span class="fas fa-envelope">
                         <form action="/ingresar" method="post">
                             <%datos.forEach( function (datos) {%>
                             <input class="oculto" value="<%=datos.id_doctor%>" type="text" name="doc">
                             <%})%>
-                            <button type="submit">Ingresar</button>
+                            <button type="submit" class="botones agrandar">Ingresar</button>
                         </form>
-                    </span>
-                </button>
             </div>
         </div>
     </div>
