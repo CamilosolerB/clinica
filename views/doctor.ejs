@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/doctor.css">
+    <link rel="stylesheet" href="./css/doctor.css">
     <script src="../ocrad/ocrad.js"></script>
     <title>Subida de Archivos</title>
 </head>
@@ -20,16 +20,25 @@
         <h1 class="titulo">Hola doctor <%=datos.nombre%> <%=datos.apellido%> <%=datos.documento%></h1>
     <%})%>
     <div class="fondo">
+        <h2>Ingresar historia clinica</h2>
     <form action="/foto" method="post" enctype="multipart/form-data" class="resu">
         <%for(i=0;i<1;i++){%>
+        <label for="">Documento:</label>
         <input type="text" value="<%=datos[i].documento%>" name="documentodoc" class="val-dat">
-        <input type="text" value="<%=datos[i].firma%>" class="val-dat">
         <%}%>
-        <input type="number" placeholder="documento paciente" name="documentopac" class="val-dat">
-        <input type="file" class="btn" placeholder="Archivo" name="firma" multiple><br>
-        <button type="submit" class="btn" name="Subir">validar firma</button><br>
-        <label for="">¿Verificado?<input type="checkbox" readonly name="verificado"></label><br>
-        <input type="file" class="btn" name="historia" multiple >
+        <label for="">Documento del paciente:</label>
+        <input type="text" placeholder="documento paciente" name="documentopac" class="val-dat">
+        <label for="">Subir nombre paciente</label>
+        <input type="file" class="btn" placeholder="Archivo" name="nombre"><br>
+        <label for="">Subir documento paciente</label>
+        <input type="file" class="btn" placeholder="Archivo" name="documento"><br>
+        <label for="">Subir direccion paciente</label>
+        <input type="file" class="btn" placeholder="Archivo" name="direccion"><br>
+        <label for="">Fecha del informe</label>
+        <input type="file" class="btn" placeholder="Archivo" name="fecha"><br>
+        <label for="">Subir informe</label>
+        <input type="file" class="btn" placeholder="Archivo" name="informacion" multiple><br>
+        <button type="submit" class="btn-subir" name="Subir">Subir a la plataforma</button><br>
     </form>
 </div>
 </body>

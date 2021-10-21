@@ -40,7 +40,7 @@ controller.ingreso=(req,res,next)=>{
         }
     })
 }
-controller.firma=(req,res,next)=>{
+controller.firma=async(req,res,next)=>{
     /*const doctor = req.body.documentodoc;
     //const paci = req.body.documentopac;
     const histo = req.body.historia;
@@ -61,44 +61,20 @@ controller.firma=(req,res,next)=>{
     const image = ["./public/upload/nombre.PNG","./public/upload/documento.PNG","./public/upload/direccion.PNG","./public/upload/fecha.PNG","./public/upload/informacion.PNG"];
     
     console.log("Antes del ocr")
-    var nombre,doc;
+    //var nombre,doc;
+
+        tesseract.recognize(image[1], options)
+        .then((nombre) => {
+
+            res.send(nombre);  
+            })
+            .catch((error)=>{
+                res.send(error.message)
+            })
+
+
+
     
-    tesseract.recognize(image, options)
-    .then((nombre) => {
-      res.send(nombre)  
-    })
-    .catch((error)=>{
-        res.send(error.message)
-    })
-    
-
-    let documento = tesseract
-    .recognize(image, options)
-    .then((doc) => {
-        res.send(doc);
-    })
-    .catch((error)=>{
-        res.send(error.message)
-    })
-
-    tesseract
-    .recognize(image, options)
-    .then((direccion) => {
-        res.send(direccion)
-    })
-    .catch((error)=>{
-        res.send(error.message)
-    })
-
-    tesseract
-    .recognize(image, options)
-    .then((fecha) => {
-        res.send(fecha)
-    })
-    .catch((error)=>{
-        res.send(error.message)
-    })
-
 
 }
 
