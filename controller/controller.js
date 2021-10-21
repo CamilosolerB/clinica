@@ -4,6 +4,7 @@ const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
 const pdf =require('pdfkit')
+const fs = require('fs')
 const tesseract = require('node-tesseract-ocr');
 const { text } = require('express');
 const controller  = {};
@@ -147,6 +148,11 @@ controller.inserta=(req,res,next)=>{
     })
 }
 
+controller.crearpdf=(req,res,next)=>{
+    const doc = new pdf();
+
+    doc.text('Hola con pdf kit',30 ,30)
+}
 
 
 
