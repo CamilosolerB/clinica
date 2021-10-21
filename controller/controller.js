@@ -3,7 +3,7 @@ const cnn = conexion();
 const bcrypjs = require('bcryptjs');
 const multer = require('multer')
 const upload = multer({ dest: '../public/upload'});
-const fs = require('fs');
+const pdf = require('html-pdf');
 const tesseract = require('node-tesseract-ocr');
 const { text } = require('express');
 const controller  = {};
@@ -58,17 +58,20 @@ controller.firma=(req,res,next)=>{
     //cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doctor,Id_paciente:paci,imagen:histo})
     //res.send("El archivo se subio")*/
 
-    const image = "http://1.bp.blogspot.com/-TC9S3zGQ9EE/VxZUlPQ0DII/AAAAAAAAC5Y/Rh5ZioT8OyUFVCNEul8wYN9ku8F9PRaMwCK4B/s1600/600.png";
+    const image = "../public/upload/Captura.PNG";
     tesseract
     .recognize(image, options)
     .then((text) => {
-        res.send(text);
+        const contenido =
+    `
+        <h1>Clinica de prueba</h1>
+        <h1></h1>
+    `
+        
     })
     .catch((error)=>{
         res.send(error.message)
     })
 }
-controller.ocr=(req,res,next)=>{
 
-}
 module.exports=controller;

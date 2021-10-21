@@ -15,7 +15,6 @@ const upload = multer({storage});
 const rutas = express.Router()
 
 //links
-rutas.post('/upload',upload.single('photo'),controller.ocr)
 rutas.get('/',controller.index);
 rutas.get('/iniciasesion',controller.login);
 rutas.post('/validar',controller.ingreso);
