@@ -57,16 +57,17 @@ controller.firma=async(req,res,next)=>{
     })
     //cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doctor,Id_paciente:paci,imagen:histo})
     //res.send("El archivo se subio")*/
+    console.log(req.files)
 
     const image = ["./public/upload/nombre.PNG","./public/upload/documento.PNG","./public/upload/direccion.PNG","./public/upload/fecha.PNG","./public/upload/informacion.PNG"];
     
     console.log("Antes del ocr")
     //var nombre,doc;
 
-        tesseract.recognize(image[1], options)
+        tesseract.recognize(image, options)
         .then((nombre) => {
-
-            res.send(nombre);  
+            console.log(nombre)
+            res.send(nombre)
             })
             .catch((error)=>{
                 res.send(error.message)
