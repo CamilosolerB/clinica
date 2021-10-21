@@ -32,7 +32,7 @@ controller.ingreso=(req,res,next)=>{
         }
         else if(resbb != 0){
 
-            res.render("doctor",{datos:resbb})
+            res.render("eleccion",{datos:resbb})
             
         }
         else{
@@ -55,7 +55,7 @@ controller.firma=async(req,res,next)=>{
         .then((dia) => {
             const doc=req.body.documentodoc
             const paci=req.body.documentopac
-            const fech=dia
+            const fech= new Date();
             cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doc,id_paciente:paci,fecha:fech},async(err,resbb)=>{
                 if(err){
                     next(new Error(err))
