@@ -38,8 +38,8 @@ nav{
 }
 .fondo{
     background: #ffff;
-    height: 15em;
-    width: 40em;
+    height: auto;
+    width: 40%;
     margin: 6em auto;
     border-radius: 10px;
     justify-content: space-between;
@@ -95,4 +95,7 @@ nav{
     background: linear-gradient(to bottom, #5CBCEC , white);     height: 45px;
     border-bottom: black 1px solid;
 
+}
+.invisible{
+    display: none;
 }

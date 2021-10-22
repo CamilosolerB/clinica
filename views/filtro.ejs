@@ -14,14 +14,17 @@
             <li class="objeto"><a href="" class="link">Quienes somos</a></li>
             <li class="objeto"><a href="" class="link">Contactos</a></li>
         </nav>
-        <%datos.forEach( function (datos) {%>
-            <a href="/cerrar" class="cerrar"><%=datos.nombred%> <%=datos.apellidod%></a>
-        <%})%>
+            <a href="/cerrar" class="cerrar">Salir</a>
     </header>
     <div class="fondo">
-    <form action="" class="filtro" method="post">
-        <input type="text" class="info-filtro" placeholder="Nombre del paciente">
-        <input type="date" class="info-filtro-fecha">
+    <form action="/filtro" class="filtro" method="post">
+        <input type="text" name="nombre" class="info-filtro" placeholder="Nombre del paciente">
+        <input type="date" name="fecha" class="info-filtro-fecha">
+        <%for(i=0;i<1;i++){%>
+        <input type="text" name="doctor" value="<%=datos[i].id_doctor%>" id="" class="
+        invisible" readonly>
+        <%}%>
+        <button type="submit">Filtrar</button>
     </form>
     <table class="tabla">
         <thead class="tr_head">
@@ -29,6 +32,7 @@
                 <th>Doctor</th>
                 <th>Paciente</th>
                 <th>Fecha</th>
+                <th>ver</th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +41,7 @@
                 <td><input type="text" value="<%=datos.nombred%> <%=datos.apellidod%>" name="nombre" id="nombre" class="info-filtro"></td>
                 <td><input type="text" value="<%=datos.nombre%>" name="nombre_paciente" id="nombre_paciente" class="info-filtro"></td>
                 <td><input type="text" value="<%=datos.fecha%>" name="fecha" id="fecha" class="info-filtro"></td>
-                <td><a href="/generamipdf"></a></td>
+                <td><button type="submit">Ver historia </button></td>
             </tr>
          <%})%>
         </tbody>

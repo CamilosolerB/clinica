@@ -7,6 +7,7 @@ const pdf =require('pdfkit')
 const fs = require('fs')
 const tesseract = require('node-tesseract-ocr');
 const { text } = require('express');
+const alert = require('alert')
 const controller  = {};
 
 const options = {
@@ -147,11 +148,46 @@ controller.inserta=(req,res,next)=>{
         }
     })
 }
+controller.filtro=(req,res,next)=>{
+    const nom = req.body.nombre;
+    const fec = req.body.fecha;
+    const doc = req.body.doctor;
+    console.log(nom)
+    console.log(fec)
+    console.log(doc)
+    if(nom == ""){
+        cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (Id_doctore=id_doctor) WHERE fecha=? AND id_doctor=?',[fec,doc],(err,resbb)=>{
+            if(err){
+                next(new Error(err))
+            }
+            else{
+                res.render('filtro',{datos:resbb})
+            }
+        })
+    }
+    else if(fec == ""){
+        cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (Id_doctore=id_doctor) WHERE nombre=? AND id_doctor=?',[nom,doc],(err,resbb)=>{
+            if(err){
+                next(new Error(err))
+            }
+            else{
+                res.render('filtro',{datos:resbb})
+            }
+        })
+    }
+    else{
+        cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (Id_doctore=id_doctor) WHERE nombre=? AND fecha=? AND id_doctor=?',[nom,fec,doc],(err,resbb)=>{
+            if(err){
+                next(new Error(err))
+            }
+            else{
+                res.render('filtro',{datos:resbb})
+            }
+        })
+    }
+}
+controller.verhistoria=(req,res,next)=>{
 
-controller.crearpdf=(req,res,next)=>{
-    const doc = new pdf();
-
-    doc.text('Hola con pdf kit',30 ,30)
 }
 
 

@@ -25,7 +25,8 @@ rutas.post('/foto',nom,controller.firma);
 rutas.post('/consultar',controller.paginafiltrar)
 rutas.get('/cerrar',controller.cerrar)
 rutas.post('/ingresar',controller.inserta);
-rutas.get('/generamipdf',controller.crearpdf);
+rutas.post('/filtro',controller.filtro);
+
 
 
 module.exports=rutas;
