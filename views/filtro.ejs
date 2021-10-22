@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./js/filtro.js"></script>
     <link rel="stylesheet" href="./css/filtro.css">
     <title>Filtrar</title>
 </head>
@@ -21,31 +23,37 @@
         <input type="text" name="nombre" class="info-filtro" placeholder="Nombre del paciente">
         <input type="date" name="fecha" class="info-filtro-fecha">
         <%for(i=0;i<1;i++){%>
-        <input type="text" name="doctor" value="<%=datos[i].id_doctor%>" id="" class="
-        invisible" readonly>
+        <input type="text" name="doctor" value="<%=datos[i].id_doctor%>" id="" class="invisible" readonly>
         <%}%>
         <button type="submit">Filtrar</button>
     </form>
+    <form action="/pdf" method="post">
     <table class="tabla">
         <thead class="tr_head">
             <tr>
-                <th>Doctor</th>
+                <th>Nombre Doctor</th>
+                <th>Documento doctor</th>
                 <th>Paciente</th>
+                <th>Documento del paciente</th>
                 <th>Fecha</th>
                 <th>ver</th>
             </tr>
         </thead>
         <tbody>
-           <% datos.forEach(function (datos){ %>
+        <% datos.forEach(function (datos){ %>
             <tr class="resu">
-                <td><input type="text" value="<%=datos.nombred%> <%=datos.apellidod%>" name="nombre" id="nombre" class="info-filtro"></td>
-                <td><input type="text" value="<%=datos.nombre%>" name="nombre_paciente" id="nombre_paciente" class="info-filtro"></td>
-                <td><input type="text" value="<%=datos.fecha%>" name="fecha" id="fecha" class="info-filtro"></td>
-                <td><button type="submit">Ver historia </button></td>
+            
+                <td><input type="text" value="<%=datos.nombred%> <%=datos.apellidod%>" name="nombre" id="nombre" class="info-filtro" readonly></td>
+                <td><input type="number" name="docdoctor" value="<%=datos.id_doctor%>" id="" class="doctor" readonly></td>
+                <td><input type="text" value="<%=datos.nombre%>" name="nombre_paciente" id="nombre_paciente" class="info-filtro" readonly></td>
+                <td><input type="number" name="docpac" value="<%=datos.id_paciente%>" id="" class="paciente" readonly></td>
+                <td><input type="text" value="<%=datos.fecha%>" name="fecha" id="fecha" class="fecha" readonly></td>
+                <td><button type="submit" class="btnfil">Ver historia </button></td>
             </tr>
-         <%})%>
+        <%})%>
         </tbody>
     </table>
+</form>
 </div>
 </body>
 </html>

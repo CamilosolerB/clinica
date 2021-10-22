@@ -26,6 +26,7 @@ rutas.post('/consultar',controller.paginafiltrar)
 rutas.get('/cerrar',controller.cerrar)
 rutas.post('/ingresar',controller.inserta);
 rutas.post('/filtro',controller.filtro);
+rutas.post('/pdf',controller.verhistoria);
 
 
 
