@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/pdf.css">
+    <link rel="stylesheet" href="./css/pdf.css">
     <title>Historia Clinica</title>
 </head>
 <header>
@@ -15,15 +15,26 @@
     </nav>
 </header>
 <body>
-    <div class="cont">
     <% datos.forEach(function (datos){ %>
+    <table>
+        <thead>
+            <tr><td colspan="10" class="tituloca">Historia Clinica</td></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <tr><td colspan="2"><b>nombre:</b><%=datos.nombre%></td></tr>
+                <tr><td colspan="2"><b>Documento:</b><%=datos.id_paciente%></td></tr>
+                <tr><td colspan="2"><b>Direccion:</b><%=datos.direccion%></td></tr>
+                <tr><td colspan="2"><b>Fecha:</b><%=datos.fecha%></td></tr>
+                <tr><td class="tituloc">Evaluacion Medica</td>
+                <td><%=datos.historia%></td></tr>
+            </tr>
+        </tbody>
+    </table>
+    <div class="cont">
 
-        <p><%=datos.nombre%></p>
-        <p><%=datos.id_paciente%></p>
-        <p><%=datos.direccion%></p>
-        <p><%=datos.fecha%></p>
-        <p><%=datos.historia%></p>
+
         <%})%>
-    </div>
+
 </body>
 </html>

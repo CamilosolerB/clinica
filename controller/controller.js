@@ -57,8 +57,14 @@ controller.firma=async(req,res,next)=>{
         .then((dia) => {
             const doc=req.body.documentodoc
             const paci=req.body.documentopac
-            const fech= new Date();
-            cnn.query('INSERT INTO historia_clinica SET?',{Id_doctor:doc,id_paciente:paci,fecha:fech},async(err,resbb)=>{
+            let date = new Date()
+
+            let day = date.getDate()
+            let month = date.getMonth() 
+            let year = date.getFullYear()
+            let fechas = (day+'/'+month+'/'+year)
+            
+            cnn.query('INSERT INTO historia_clinica SET?',{Id_doctore:doc,id_paciente:paci,fecha:fechas},async(err,resbb)=>{
                 if(err){
                     next(new Error(err))
                 }
@@ -67,7 +73,7 @@ controller.firma=async(req,res,next)=>{
                     .then((nombr) => {
                         const doc=req.body.documentodoc
                         const paci=req.body.documentopac
-                        cnn.query('UPDATE historia_clinica SET nombre="'+nombr+'" WHERE Id_doctor="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
+                        cnn.query('UPDATE historia_clinica SET nombre="'+nombr+'" WHERE Id_doctore="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
                             if(err){
                                 next(new Error(err))
                             }
@@ -76,7 +82,7 @@ controller.firma=async(req,res,next)=>{
                                 .then((direct) => {
                                     const doc=req.body.documentodoc
                                     const paci=req.body.documentopac
-                                    cnn.query('UPDATE historia_clinica SET direccion="'+direct+'" WHERE Id_doctor="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
+                                    cnn.query('UPDATE historia_clinica SET direccion="'+direct+'" WHERE Id_doctore="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
                                         if(err){
                                             next(new Error(err))
                                         }
@@ -85,14 +91,14 @@ controller.firma=async(req,res,next)=>{
                                             .then((clinic) => {
                                                 const doc=req.body.documentodoc
                                                 const paci=req.body.documentopac
-                                                cnn.query('UPDATE historia_clinica SET historia="'+clinic+'" WHERE Id_doctor="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
+                                                cnn.query('UPDATE historia_clinica SET historia="'+clinic+'" WHERE Id_doctore="'+doc+'" AND id_paciente="'+paci+'"',async(err,resbb)=>{
                                                     if(err){
                                                         next(new Error(err))
                                                     }
                                                     else{
                                                         const doc=req.body.documentodoc
                                                         const paci=req.body.documentopac
-                                                        cnn.query("SELECT * FROM historia_clinica WHERE Id_doctor=? AND id_paciente=?",[doc,paci],(err,resbb)=>{
+                                                        cnn.query("SELECT * FROM historia_clinica WHERE Id_doctore=? AND id_paciente=?",[doc,paci],(err,resbb)=>{
                                                             if(err){
                                                                 next(new Error(err))
                                                             }
@@ -153,7 +159,7 @@ controller.filtro=(req,res,next)=>{
     const fec = req.body.fecha;
     const doc = req.body.doctor;
     console.log(nom)
-    console.log(fec)
+    console.log("hola"+fec)
     console.log(doc)
     if(nom == ""){
         cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (Id_doctore=id_doctor) WHERE fecha=? AND id_doctor=?',[fec,doc],(err,resbb)=>{
@@ -166,7 +172,7 @@ controller.filtro=(req,res,next)=>{
         })
     }
     else if(fec == ""){
-        cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (Id_doctore=id_doctor) WHERE nombre=? AND id_doctor=?',[nom,doc],(err,resbb)=>{
+        cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (historia_clinica.Id_doctore=doctor.id_doctor) WHERE nombre=? AND id_doctor=?',[nom,doc],(err,resbb)=>{
             if(err){
                 next(new Error(err))
             }
@@ -176,7 +182,7 @@ controller.filtro=(req,res,next)=>{
         })
     }
     else{
-        cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (Id_doctore=id_doctor) WHERE nombre=? AND fecha=? AND id_doctor=?',[nom,fec,doc],(err,resbb)=>{
+        cnn.query('SELECT * FROM historia_clinica INNER JOIN doctor ON (historia_clinica.Id_doctore=doctor.id_doctor) WHERE nombre=? AND fecha=? AND id_doctor=?',[nom,fec,doc],(err,resbb)=>{
             if(err){
                 next(new Error(err))
             }
@@ -186,8 +192,23 @@ controller.filtro=(req,res,next)=>{
         })
     }
 }
-controller.verhistoria=(req,res,next)=>{
+controller.verhistoria=async(req,res,next)=>{
+    const doc = req.body.docdoctor;
+    const usu = req.body.docpac;
+    const fec = req.body.fecha;
+    console.log(doc)
+    console.log(usu)
+    console.log(fec)
+    cnn.query('SELECT * FROM historia_clinica WHERE Id_doctore="'+doc[0]+'" AND id_paciente="'+usu[0]+'" AND fecha="'+fec[0]+'"',async(err,resbb)=>{
+        if(err){
+            next(new Error(err))
+        }
+        else{
 
+            res.render('pdf',{datos:resbb})
+            console.log(resbb)
+        }
+    })
 }
 
 
